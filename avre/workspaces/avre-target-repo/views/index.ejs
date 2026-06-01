@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Search | AVRE Target</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0b0e14;
+            --card-bg: #161b22;
+            --border-color: #30363d;
+            --text-primary: #c9d1d9;
+            --text-secondary: #8b949e;
+            --accent: #58a6ff;
+            --danger: #f85149;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            background-image:
+                radial-gradient(at 0% 0%, rgba(88, 166, 255, 0.05) 0, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(88, 166, 255, 0.05) 0, transparent 50%);
+            color: var(--text-primary);
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 60px 20px;
+        }
+
+        .banner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 8px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: var(--danger);
+            color: white;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            margin-top: 20px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin: 0;
+            color: #ffffff;
+            letter-spacing: -1px;
+        }
+
+        p.subtitle {
+            color: var(--text-secondary);
+            margin-top: 10px;
+            font-size: 1.1rem;
+        }
+
+        .search-section {
+            width: 100%;
+            max-width: 800px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            margin-bottom: 30px;
+        }
+
+        .search-form {
+            display: flex;
+            gap: 12px;
+        }
+
+        .input-group {
+            position: relative;
+            flex: 1;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 14px 14px 14px 45px;
+            background: #0d1117;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            color: white;
+            font-size: 1rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.2);
+        }
+
+        .input-group svg {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-secondary);
+        }
+
+        button {
+            padding: 0 25px;
+            background: var(--accent);
+            color: #ffffff;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.2s, transform 0.1s;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        .results-box {
+            margin-top: 25px;
+            padding: 20px;
+            background: rgba(88, 166, 255, 0.05);
+            border-radius: 12px;
+            border: 1px dashed var(--accent);
+        }
+
+        .results-box h3 {
+            margin-top: 0;
+            color: var(--accent);
+            font-size: 1.1rem;
+        }
+
+        .reflection {
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .dash-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--accent);
+        }
+
+        .stat-val {
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: block;
+            color: #fff;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 5px;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="banner">WARNING: VULNERABLE VERSION - NO PROTECTION ACTIVE</div>
+
+    <div class="header">
+        <h1>Modern Search Dashboard</h1>
+        <p class="subtitle">Secure enterprise data indexing and discovery</p>
+    </div>
+
+    <div class="search-section">
+        <form action="/search" method="GET" class="search-form">
+            <div class="input-group">
+                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="M21 21l-4.35-4.35"></path>
+                </svg>
+                <input type="text" name="q" placeholder="Enter keywords to search..." required>
+            </div>
+            <button type="submit">Execute Search</button>
+        </form>
+
+        <% if (query) { %>
+            <div class="results-box">
+                <h3>System Results</h3>
+                <!-- REFLECTION POINT -->
+                <p>No results found for: <span class="reflection"><%- query %></span></p>
+                <p style="font-size: 0.85rem; color: var(--text-secondary);">Target database:
+                    <code>prod_cluster_01</code>. Status: 0 hits.</p>
+            </div>
+            <% } %>
+    </div>
+
+    <div class="dash-grid">
+        <div class="stat-card">
+            <span class="stat-val">102ms</span>
+            <span class="stat-label">Indexing Latency</span>
+        </div>
+        <div class="stat-card">
+            <span class="stat-val">99.98%</span>
+            <span class="stat-label">Engine Uptime</span>
+        </div>
+        <div class="stat-card">
+            <span class="stat-val">12.5 TB</span>
+            <span class="stat-label">Data Analyzed</span>
+        </div>
+    </div>
+</body>
+
+</html>
